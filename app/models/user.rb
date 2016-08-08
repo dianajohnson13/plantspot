@@ -9,4 +9,11 @@ class User < ApplicationRecord
 
   has_secure_password
   validates(:password, presence: true, length: {minimum: 6})
+
+
+  # Returns a password_digest for the passed in string
+  # Used for the user fixture in the login integeration tests
+  def User.digest(string)
+    BCrypt::Password.create(string)
+  end
 end
