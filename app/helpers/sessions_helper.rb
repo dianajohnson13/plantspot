@@ -6,7 +6,8 @@ module SessionsHelper
   end
 
   def logout
-    session[:user_id] = ""
+    session.delete(:user_id)
+    @current_user = nil
   end
 
   def logged_in?
