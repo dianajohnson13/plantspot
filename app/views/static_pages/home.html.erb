@@ -1,5 +1,8 @@
 <h1>Welcome to PlantSpot: a place to talk about plants!</h1>
-<div>
- <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+
+<% if !logged_in? %>
+  <div>
+    <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
     <%= link_to "Log In", login_path, class: "btn btn-lg btn-primary" %>
-</div>
+  </div>
+<% end %>
