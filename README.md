@@ -1,7 +1,7 @@
-In Progress!
- 
+# PlantSpot
+ In Progress!
 
-Immediate next steps:
+## Immediate next steps:
 - allow users to: 
   - edit/delete their profiles
   - create microposts (see posting branch)
@@ -11,4 +11,4 @@ Immediate next steps:
 
 
 Deployed, but still in progress:
-www.plantspot.org
+[www.plantspot.org](www.plantspot.org)
