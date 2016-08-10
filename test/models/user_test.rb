@@ -65,7 +65,7 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     Micropost.create(content: "Hello!", user_id: @user[:id])
     assert_difference 'Micropost.count', -1 do
-      @user.destroy
+    @user.destroy
     end
   end
 
