@@ -2,12 +2,11 @@ class MicropostsController < ApplicationController
   before_action :confirm_user_logged_in, only: [:create, :destroy]
   
   def create
-
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       redirect_to root_url
     else
-      @posts = []
+      @posts = current_user.feed
       render 'static_pages/home'
     end
   end
