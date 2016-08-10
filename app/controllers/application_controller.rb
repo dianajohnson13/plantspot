@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
   def hello
     render html: "Hello, world!"
   end
+
+  private 
+
+  def confirm_user_logged_in
+    if !logged_in?
+      redirect_to login_path
+    end
+  end
 end
