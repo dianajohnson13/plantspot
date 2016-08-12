@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: userInput[:email])
     if user && user.authenticate(userInput[:password])
       login(user)
+      remember(user)
       redirect_to root_url
     else 
       render 'new'
