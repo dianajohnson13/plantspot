@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: userInput[:email])
     if user && user.authenticate(userInput[:password])
       login(user)
-      remember(user)
+      # if the user checks off the remember me box on login, use advanced 'remember-token' auth
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to root_url
     else 
       render 'new'
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
 
     # user_params is for security; it limits potential data being passed from user in 'params' to be submitted
     def session_params
-      params.require(:session).permit(:email, :password, :user_id)
+      params.require(:session).permit(:email, :password, :user_id, :remember_me)
     end
 
 end
