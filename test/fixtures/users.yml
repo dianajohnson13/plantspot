@@ -10,6 +10,7 @@
 
 # 
 testuser1:
+  id: 1
   username: testuser1
   email: testuser1@example.com
   password_digest: <%= User.digest('password') %>
