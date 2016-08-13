@@ -30,6 +30,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "usernames should be unique" do
+    dup_user = @user.dup
+    dup_user.username = @user.username
+    @user.save
+    assert_not dup_user.valid?
+  end
+
   test "email addresses should be unique" do
     dup_user = @user.dup
     dup_user.email = @user.email.upcase
