@@ -15,6 +15,10 @@ class ActiveSupport::TestCase
   def login_as(user)
     session[:user_id] = user.id
   end
+
+  def count_user_posts(user)
+    Micropost.where(user_id: user.id).count
+  end
 end
 
 class ActionDispatch::IntegrationTest

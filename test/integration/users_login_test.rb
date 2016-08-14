@@ -6,7 +6,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:testuser1)
   end
 
-
   test "invalid user login" do
     get login_path
     post login_path, params: {session: 
@@ -42,7 +41,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     
     assert_select "a[href=?]", login_path, count:0
     assert_select "a[href=?]", logout_path
-    assert_select "a[href=?]", user_path(@user)
+
+    # count the number of posts for the user to check whether the profile link is present
+    # multiply result * 2 b/c there are two links for each micropost
+    # *** Count of links to the users profile is imporant for checking if nav bar contains 'profile' on logout --see assert select after logout
+    exp_user_profile_links = count_user_posts(@user) * 2
+    assert_select "a[href=?]", user_path(@user), count: exp_user_profile_links + 1
 
     # Logout
     delete logout_path
@@ -55,7 +59,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
     assert_select "a[href=?]", login_path, count:2
     assert_select "a[href=?]", logout_path, count:0
-    assert_select "a[href=?]", user_path(@user), count:0
+    assert_select "a[href=?]", user_path(@user), count: exp_user_profile_links 
   end
 
   test "remember login" do
