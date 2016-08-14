@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   # PRIVATE
   private
 
