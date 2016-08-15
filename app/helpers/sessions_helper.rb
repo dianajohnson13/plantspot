@@ -27,6 +27,10 @@ module SessionsHelper
     end
   end
 
+  def current_user?(user)
+    user == current_user
+  end
+
   def remember(user)
     user.remember
     # 'signed'-ing a cookie securely encrypts it before giving to the browser
