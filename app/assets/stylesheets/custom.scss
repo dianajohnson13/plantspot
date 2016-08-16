@@ -71,7 +71,7 @@ p {
   }
 }
 
-/* header */
+/* footer */
 
 footer {
   margin-top: 45px;
@@ -205,4 +205,18 @@ aside {
 
 .gravatar_edit {
   margin-top: 15px;
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    font-weight: bold;
+    font-size: 1.2em;
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }
