@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
     # user_params is for security; it limits potential data being passed from user in 'params' to be submitted
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :mini_bio)
     end
 
     # confirms logged-in user
