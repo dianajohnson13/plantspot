@@ -69,6 +69,15 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "mini bios are not required" do
+    assert @user.valid?
+  end
+
+  test "mini bios should have a maximum length" do
+    @user.mini_bio = "a" * 256
+    assert_not @user.valid?
+  end
+
   test "authenticated? should return false for user with nil remember_digest" do
     assert_not @user.authenticated?('')
   end
