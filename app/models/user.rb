@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_secure_password
   validates(:password, presence: true, length: {minimum: 6}, allow_nil: true)
 
+  validates(:mini_bio, length: {maximum: 255})
+
   def feed
     Micropost.where("user_id = ?", id)
   end
